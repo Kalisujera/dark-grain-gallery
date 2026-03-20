@@ -1,16 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from '@/components/Navbar';
+import CategoryBanner from '@/components/CategoryBanner';
+import bannerConceptArt from '@/assets/banner-concept-art.jpg';
+import bannerIllustration from '@/assets/banner-illustration.jpg';
+import bannerSketches from '@/assets/banner-sketches.jpg';
+import bannerMisc from '@/assets/banner-misc.jpg';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const categories = [
+  { title: 'Concept Art', subtitle: 'Worlds & Environments', image: bannerConceptArt },
+  { title: 'Illustration', subtitle: 'Narrative & Editorial', image: bannerIllustration },
+  { title: 'Sketches', subtitle: 'Studies & Exploration', image: bannerSketches },
+  { title: 'Miscellaneous', subtitle: 'Everything Else', image: bannerMisc },
+];
+
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="grain">
+      <Navbar />
+      <main>
+        {categories.map((cat, i) => (
+          <CategoryBanner
+            key={cat.title}
+            title={cat.title}
+            subtitle={cat.subtitle}
+            image={cat.image}
+            index={i}
+          />
+        ))}
+      </main>
+      <footer className="py-12 text-center">
+        <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground" style={{ fontFamily: 'var(--font-body)' }}>
+          © 2026 · Portfolio
+        </p>
+      </footer>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
