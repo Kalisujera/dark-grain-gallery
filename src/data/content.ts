@@ -1,8 +1,8 @@
 // ==========================================
-// CAIO KALININE - PORTFOLIO CONTENT
+// CAIO KALININE - PORTFOLIO CONTENT & ARCHIVE SYSTEM
 // ==========================================
+// This file acts as your central database. 
 // Every piece of text, image, and link on the site can be edited here.
-// Images should be placed in the public/images folder and referenced like "/images/filename.jpg"
 
 export const siteConfig = {
   name: "Caio Kalinine",
@@ -14,31 +14,75 @@ export const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Blog", href: "/blog" },
+  { label: "Journal", href: "/blog" },
 ];
 
-export const homeSections = [
-  {
-    title: "Concept Art",
-    description: "Worldbuilding and environmental design.",
-    image: "/images/concept-art.jpg",
+/* 
+  ==========================================
+  CATEGORY AND PROJECT ARCHIVE DATA
+  ==========================================
+  This powers the Homepage and all Category Pages.
+  
+  HOW TO ADD A NEW PROJECT:
+  1. Find the target category (e.g. "concept-art").
+  2. Copy an entire `{ ... }` block inside the `projects: []` array.
+  3. Paste it below the existing one.
+  4. Change the IDs, Titles, and Image URLs.
+  
+  HOW TO ADD IMAGES TO A PROJECT GALLERY:
+  1. Go to the `gallery: []` array of a project.
+  2. Add `{ url: "/images/...", caption: "Text", description: "Optional text" }`.
+*/
+export const archiveData: Record<string, any> = {
+  "concept-art": {
+    id: "concept-art",
+    pageTitle: "Concept Art",
+    intro: "Worldbuilding, environmental design, and architectural explorations.",
+    homeBannerImage: "/images/concept-art-cover.jpg",
+    projects: [
+      {
+        id: "nocturnal-library",
+        title: "Nocturnal Library",
+        subtitle: "Environment Design",
+        description: "Exploration notes for an abandoned repository of knowledge. Focusing on structural scale and dim light.",
+        coverImage: "/images/concept-art/nocturnal-library/cover.jpg",
+        gallery: [
+          {
+            url: "/images/concept-art/nocturnal-library/interior-01.jpg",
+            caption: "Main Hall structure",
+            description: "Optional longer description about the mood and lighting."
+          },
+          {
+            url: "/images/concept-art/nocturnal-library/exterior-01.jpg",
+            caption: "Exterior facade",
+            description: ""
+          }
+        ]
+      }
+    ]
   },
-  {
-    title: "Illustration",
-    description: "Narrative and standalone pieces.",
-    image: "/images/illustration.jpg",
+  "illustration": {
+    id: "illustration",
+    pageTitle: "Illustration",
+    intro: "Narrative, character-focused, and standalone pieces.",
+    homeBannerImage: "/images/illustration-cover.jpg",
+    projects: []
   },
-  {
-    title: "Sketches",
-    description: "Process, fragments, and ideas.",
-    image: "/images/sketches.jpg",
+  "sketches": {
+    id: "sketches",
+    pageTitle: "Sketches",
+    intro: "Process, fragments, and raw ideas from the sketchbook.",
+    homeBannerImage: "/images/sketches-cover.jpg",
+    projects: []
   },
-  {
-    title: "Miscellaneous",
-    description: "Experiments and personal projects.",
-    image: "/images/misc.jpg",
+  "misc": {
+    id: "misc",
+    pageTitle: "Miscellaneous",
+    intro: "Experiments and personal oddities.",
+    homeBannerImage: "/images/misc-cover.jpg",
+    projects: []
   }
-];
+};
 
 export const aboutContent = {
   title: "About",
@@ -65,14 +109,7 @@ export const blogPosts = [
     id: "1",
     date: "2024-03-20",
     title: "Designing Nocturnal Archives",
-    content: "A short text about the process of designing environments that feel like ancient or abandoned repositories of knowledge. I often start with dark silhouettes, blocking out shapes before delving into the granular texture of the ruins...",
+    content: "A short text about the process of designing environments that feel like ancient or abandoned repositories of knowledge...",
     image: "/images/blog-1.jpg"
-  },
-  {
-    id: "2",
-    date: "2024-02-15",
-    title: "Creature Sketchbook Dump",
-    content: "Sharing some recent sketches from the sketchbook. Focused mostly on insectoid shapes and fungal integrations. I enjoy the blend between natural anatomy and bizarre alien growths.",
-    image: "/images/blog-2.jpg"
   }
 ];
